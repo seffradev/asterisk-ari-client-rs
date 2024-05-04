@@ -447,6 +447,18 @@ impl ChannelsAPI for AriClient {
         Ok(())
     }
 
+    async fn dial(&self, channel_id: &str) -> Result<()> {
+        let resp = HTTP_CLIENT
+            .post(format!("{}/channels/{}/dial", self.url, channel_id))
+            .headers(self.get_common_headers()?)
+            .send()
+            .await?;
+
+        let status = resp.status();
+        eval_status_code!(status, StatusCode::NO_CONTENT, None);
+        Ok(())
+    }
+
     async fn play(
         &self,
         channel_id: &str,

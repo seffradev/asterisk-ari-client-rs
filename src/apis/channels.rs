@@ -7,6 +7,10 @@ use async_trait::async_trait;
 pub trait ChannelsAPI {
     /// Answer a channel.
     async fn answer(&self, channel_id: &str) -> Result<()>;
+
+    /// Dial a created channel
+    async fn dial(&self, channel_id: &str) -> Result<()>;
+
     /// Play media to a channel
     async fn play(
         &self,
