@@ -171,7 +171,7 @@ impl AriClient {
         // at the moment we are not supporting 'subscribeAll=true' option.
         // // will be added once/if needed
         let ws_url_str = format!(
-            "{}://{}:{}/ari/events?app={}&api_key={}:{}",
+            "{}://{}:{}/ari/events?app={}&subscribeAll=true&api_key={}:{}",
             ws_protocol,
             hostname,
             portno,
